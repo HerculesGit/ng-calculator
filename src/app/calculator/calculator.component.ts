@@ -46,14 +46,14 @@ export class CalculatorComponent implements OnInit {
 
   adicionarNumero (key: string){
     if (this.operator === null ) {
-      this.num1 = this.contatenarValor(this.num1, key)
+      this.num1 = this.concatenarValor(this.num1, key)
     } else {
-      this.num2 = this.contatenarValor(this.num2, key)
+      this.num2 = this.concatenarValor(this.num2, key)
     }
     console.log(this.num1 + ' | ' + this.num2)
   }
 
-  private contatenarValor(numAtual: string, numConcat: string): string {
+  private concatenarValor(numAtual: string, numConcat: string): string {
     if (numAtual === null || numAtual === '0'){
       numAtual = ''
     }
