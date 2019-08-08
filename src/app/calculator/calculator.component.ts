@@ -1,11 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { CalculatorService } from '../services/calculator.service';
 
-// este decorator diz que essa classe é um componente
+// this decorator says this class os a component
 @Component({
-  selector: 'app-calculator', // podemos dar nome a nossa tag html criada
-  templateUrl: './calculator.component.html', // podemos usar apenas template para nosso componente de exibição
-  styleUrls: ['./calculator.component.css'] // uma ou mais folhas de estilo
+
+  // tag name
+  selector: 'app-calculator',
+  
+  // this is html component template 
+  templateUrl: './calculator.component.html',
+
+  // one stylesheet
+  styleUrls: ['./calculator.component.css'] 
 })
 
 export class CalculatorComponent implements OnInit {
@@ -13,64 +19,61 @@ export class CalculatorComponent implements OnInit {
   private operator: string
   private num1: string
   private num2: string
-  private result: string = '0'
+  private result: string
 
   constructor(private service: CalculatorService) { }
 
   ngOnInit() {
-    this.limpar()
+    this.clearAll()
   }
 
-  limpar(): void {
+  clearAll(): void {
     this.num1 = '0'
     this.num2 = null
     this.operator = null
     this.result = '0'
   }
 
-  calcular (): void {
+  calculate (): void {
     if(this.num1 != null && this.num2 != null){
-      let r = this.service.calcular(parseInt(this.num1), parseInt(this.num2), this.operator).toString()  
-      this.setValueScreen(r)
+      let result = this.service.calcular(parseInt(this.num1), parseInt(this.num2), this.operator).toString()  
+      this.setValueOnScreen(result)
     }
   }
 
-  private setValueScreen(value: string): void{
+  private setValueOnScreen(value: string): void{
     this.result = value
   }
   
 
   addOperator(operator: string): void {
     this.operator = operator
-    console.log(operator)
   }
 
-
-  adicionarNumero (key: string){
+  addNumber (key: string){
     if (this.operator === null ) {
-      this.num1 = this.concatenarValor(this.num1, key)
+      this.num1 = this.concatenateValue(this.num1, key)
       this.result = this.num1
     } else {
-      this.num2 = this.concatenarValor(this.num2, key)
+      this.num2 = this.concatenateValue(this.num2, key)
       this.result = this.num2
     }
-    console.log(this.num1 + ' | ' + this.num2)
   }
 
-  private concatenarValor(numAtual: string, numConcat: string): string {
-    if (numAtual === null || numAtual === '0'){
-      numAtual = ''
+  private concatenateValue(currentNumber: string, concatenateValue: string): string {
+    if (currentNumber === null || currentNumber === '0'){
+      currentNumber = ''
     }
 
-    if (numConcat === '.' && numAtual === ''){
+    if (concatenateValue === '.' && currentNumber === ''){
       return '0.'
     }
 
-    if (numConcat === '.' && numAtual.indexOf('.') > -1){
-      return numAtual
+    if (concatenateValue === '.' && currentNumber.indexOf('.') > -1){
+      return currentNumber
     }
 
-    return numAtual + numConcat
+    return currentNumber + concatenateValue
     
   }
 
