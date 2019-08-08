@@ -32,6 +32,7 @@ export class CalculatorComponent implements OnInit {
 
   addOperator(operator: string): void {
     this.operator = operator
+    console.log(operator)
   }
 
 
@@ -41,7 +42,7 @@ export class CalculatorComponent implements OnInit {
     } else {
       this.num2 = this.contatenarValor(this.num2, key)
     }
-
+    console.log(this.num1 + ' | ' + this.num2)
   }
 
   private contatenarValor(numAtual: string, numConcat: string): string {

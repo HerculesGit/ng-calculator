@@ -7,32 +7,32 @@
     <div class="calculator-keys">
         
         <!-- operators -->
-        <button type="button" class="operator" value="+">+</button>
-        <button type="button" class="operator" value="-">-</button>
-        <button type="button" class="operator" value="*">&times;</button>
-        <button type="button" class="operator" value="/">&divide;</button>
+        <button type="button" class="operator" value="+" (click)="addOperator('+')">+</button>
+        <button type="button" class="operator" value="-" (click)="addOperator('-')">-</button>
+        <button type="button" class="operator" value="*" (click)="addOperator('*')">&times;</button>
+        <button type="button" class="operator" value="/" (click)="addOperator('/')">&divide;</button>
     
         <!-- 1-line numbers -->
-        <button type="button" value="7">7</button>
-        <button type="button" value="7">8</button>
-        <button type="button" value="7">9</button>
+        <button type="button" value="7" (click)="adicionarNumero('7')">7</button>
+        <button type="button" value="8" (click)="adicionarNumero('8')">8</button>
+        <button type="button" value="9" (click)="adicionarNumero('9')">9</button>
 
         <!-- 2-line numbers -->
-        <button type="button" value="7">4</button>
-        <button type="button" value="7">5</button>
-        <button type="button" value="7">6</button>
+        <button type="button" value="4" (click)="adicionarNumero('4')">4</button>
+        <button type="button" value="5" (click)="adicionarNumero('5')">5</button>
+        <button type="button" value="6" (click)="adicionarNumero('6')">6</button>
 
         <!-- 3-line numbers -->
-        <button type="button" value="7">1</button>
-        <button type="button" value="7">2</button>
-        <button type="button" value="7">3</button>
+        <button type="button" value="1" (click)="adicionarNumero('1')">1</button>
+        <button type="button" value="2" (click)="adicionarNumero('2')">2</button>
+        <button type="button" value="3" (click)="adicionarNumero('3')">3</button>
 
         <!-- 4 line number and especial caracteres -->
-        <button type="button" value="0">0</button>
-        <button type="button" class="decimal" value=".">.</button>
-        <button type="button" class="all-clear" value="all-clear">AC</button>
+        <button type="button" value="0" (click)="adicionarNumero('0')">0</button>
+        <button type="button" class="decimal" value="." (click)="adicionarNumero('.')">.</button>
+        <button type="button" class="all-clear" value="all-clear" (click)="limpar()">AC</button>
 
-        <button type="button" class="equal-sign" value="=">=</button>
+        <button type="button" class="equal-sign" value="=" (click)="calcular()">=</button>
 
     </div>
 
