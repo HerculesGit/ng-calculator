@@ -30,11 +30,12 @@ export class CalculatorComponent implements OnInit {
 
   calcular (): string {
     let r = this.service.calcular(parseInt(this.num1), parseInt(this.num2), this.operator).toString()  
+    this.setValueScreen(r)
     return r
   }
 
-  calculatorScreen(): void{
-    this.result = this.calcular()
+  private setValueScreen(value: string): void{
+    this.result = value
   }
   
 
@@ -47,8 +48,10 @@ export class CalculatorComponent implements OnInit {
   adicionarNumero (key: string){
     if (this.operator === null ) {
       this.num1 = this.concatenarValor(this.num1, key)
+      this.result = this.num1
     } else {
       this.num2 = this.concatenarValor(this.num2, key)
+      this.result = this.num2
     }
     console.log(this.num1 + ' | ' + this.num2)
   }
