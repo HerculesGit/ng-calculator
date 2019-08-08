@@ -18,6 +18,14 @@ export class CalculatorComponent implements OnInit {
   constructor(private service: CalculatorService) { }
 
   ngOnInit() {
+    this.limpar()
+  }
+
+  limpar(): void {
+    this.num1 = '0'
+    this.num2 = null
+    this.operator = null
+    this.result = '0'
   }
 
   calcular (): string {
@@ -47,14 +55,14 @@ export class CalculatorComponent implements OnInit {
 
   private contatenarValor(numAtual: string, numConcat: string): string {
     if (numAtual === null || numAtual === '0'){
-      numAtual = '0'
+      numAtual = ''
     }
 
     if (numConcat === '.' && numAtual === ''){
       return '0.'
     }
 
-    if (numConcat === '.' && numAtual.includes('.')){
+    if (numConcat === '.' && numAtual.indexOf('.') > -1){
       return numAtual
     }
 
