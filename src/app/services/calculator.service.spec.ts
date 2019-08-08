@@ -9,4 +9,12 @@ describe('CalculatorService', () => {
     const service: CalculatorService = TestBed.get(CalculatorService);
     expect(service).toBeTruthy();
   });
+
+
+  it ('deve garantir que a soma de 1 + 4 seja igual a 5', ()=>{
+    const service: CalculatorService = TestBed.get(CalculatorService)
+    expect(service.calcular(1, 4, "+")).toEqual(5)
+  })
+
+
 });
