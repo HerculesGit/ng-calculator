@@ -28,10 +28,11 @@ export class CalculatorComponent implements OnInit {
     this.result = '0'
   }
 
-  calcular (): string {
-    let r = this.service.calcular(parseInt(this.num1), parseInt(this.num2), this.operator).toString()  
-    this.setValueScreen(r)
-    return r
+  calcular (): void {
+    if(this.num1 != null && this.num2 != null){
+      let r = this.service.calcular(parseInt(this.num1), parseInt(this.num2), this.operator).toString()  
+      this.setValueScreen(r)
+    }
   }
 
   private setValueScreen(value: string): void{
